@@ -27,9 +27,9 @@ enum {
   anon_sym_RBRACK = 8,
   sym_string = 9,
   sym_number = 10,
-  anon_sym_null = 11,
-  anon_sym_true = 12,
-  anon_sym_false = 13,
+  sym_null = 11,
+  sym_true = 12,
+  sym_false = 13,
   sym_file = 14,
   sym_object = 15,
   sym_member = 16,
@@ -51,9 +51,9 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_RBRACK] = "]",
   [sym_string] = "string",
   [sym_number] = "number",
-  [anon_sym_null] = "null",
-  [anon_sym_true] = "true",
-  [anon_sym_false] = "false",
+  [sym_null] = "null",
+  [sym_true] = "true",
+  [sym_false] = "false",
   [sym_file] = "file",
   [sym_object] = "object",
   [sym_member] = "member",
@@ -75,9 +75,9 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_RBRACK] = anon_sym_RBRACK,
   [sym_string] = sym_string,
   [sym_number] = sym_number,
-  [anon_sym_null] = anon_sym_null,
-  [anon_sym_true] = anon_sym_true,
-  [anon_sym_false] = anon_sym_false,
+  [sym_null] = sym_null,
+  [sym_true] = sym_true,
+  [sym_false] = sym_false,
   [sym_file] = sym_file,
   [sym_object] = sym_object,
   [sym_member] = sym_member,
@@ -132,17 +132,17 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [anon_sym_null] = {
+  [sym_null] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
-  [anon_sym_true] = {
+  [sym_true] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
-  [anon_sym_false] = {
+  [sym_false] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [sym_file] = {
     .visible = true,
@@ -2133,24 +2133,24 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(68);
       END_STATE();
     case 69:
-      ACCEPT_TOKEN(anon_sym_null);
+      ACCEPT_TOKEN(sym_null);
       END_STATE();
     case 70:
-      ACCEPT_TOKEN(anon_sym_null);
+      ACCEPT_TOKEN(sym_null);
       if (sym_identifier_character_set_2(lookahead)) ADVANCE(59);
       END_STATE();
     case 71:
-      ACCEPT_TOKEN(anon_sym_true);
+      ACCEPT_TOKEN(sym_true);
       END_STATE();
     case 72:
-      ACCEPT_TOKEN(anon_sym_true);
+      ACCEPT_TOKEN(sym_true);
       if (sym_identifier_character_set_2(lookahead)) ADVANCE(59);
       END_STATE();
     case 73:
-      ACCEPT_TOKEN(anon_sym_false);
+      ACCEPT_TOKEN(sym_false);
       END_STATE();
     case 74:
-      ACCEPT_TOKEN(anon_sym_false);
+      ACCEPT_TOKEN(sym_false);
       if (sym_identifier_character_set_2(lookahead)) ADVANCE(59);
       END_STATE();
     default:
@@ -2205,9 +2205,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RBRACK] = ACTIONS(1),
     [sym_string] = ACTIONS(1),
     [sym_number] = ACTIONS(1),
-    [anon_sym_null] = ACTIONS(1),
-    [anon_sym_true] = ACTIONS(1),
-    [anon_sym_false] = ACTIONS(1),
+    [sym_null] = ACTIONS(1),
+    [sym_true] = ACTIONS(1),
+    [sym_false] = ACTIONS(1),
   },
   [1] = {
     [sym_file] = STATE(28),
@@ -2228,9 +2228,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RBRACK] = ACTIONS(11),
     [sym_string] = ACTIONS(13),
     [sym_number] = ACTIONS(13),
-    [anon_sym_null] = ACTIONS(13),
-    [anon_sym_true] = ACTIONS(13),
-    [anon_sym_false] = ACTIONS(13),
+    [sym_null] = ACTIONS(13),
+    [sym_true] = ACTIONS(13),
+    [sym_false] = ACTIONS(13),
   },
   [3] = {
     [sym_object] = STATE(27),
@@ -2242,9 +2242,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RBRACK] = ACTIONS(15),
     [sym_string] = ACTIONS(17),
     [sym_number] = ACTIONS(17),
-    [anon_sym_null] = ACTIONS(17),
-    [anon_sym_true] = ACTIONS(17),
-    [anon_sym_false] = ACTIONS(17),
+    [sym_null] = ACTIONS(17),
+    [sym_true] = ACTIONS(17),
+    [sym_false] = ACTIONS(17),
   },
   [4] = {
     [sym_object] = STATE(27),
@@ -2256,9 +2256,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_RBRACK] = ACTIONS(19),
     [sym_string] = ACTIONS(17),
     [sym_number] = ACTIONS(17),
-    [anon_sym_null] = ACTIONS(17),
-    [anon_sym_true] = ACTIONS(17),
-    [anon_sym_false] = ACTIONS(17),
+    [sym_null] = ACTIONS(17),
+    [sym_true] = ACTIONS(17),
+    [sym_false] = ACTIONS(17),
   },
   [5] = {
     [sym_object] = STATE(27),
@@ -2269,9 +2269,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LBRACK] = ACTIONS(9),
     [sym_string] = ACTIONS(17),
     [sym_number] = ACTIONS(17),
-    [anon_sym_null] = ACTIONS(17),
-    [anon_sym_true] = ACTIONS(17),
-    [anon_sym_false] = ACTIONS(17),
+    [sym_null] = ACTIONS(17),
+    [sym_true] = ACTIONS(17),
+    [sym_false] = ACTIONS(17),
   },
   [6] = {
     [sym_object] = STATE(26),
@@ -2282,9 +2282,9 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_LBRACK] = ACTIONS(9),
     [sym_string] = ACTIONS(21),
     [sym_number] = ACTIONS(21),
-    [anon_sym_null] = ACTIONS(21),
-    [anon_sym_true] = ACTIONS(21),
-    [anon_sym_false] = ACTIONS(21),
+    [sym_null] = ACTIONS(21),
+    [sym_true] = ACTIONS(21),
+    [sym_false] = ACTIONS(21),
   },
 };
 

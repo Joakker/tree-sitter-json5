@@ -30,6 +30,9 @@ module.exports = grammar({
             const dec_literal = choice(seq(int_literal, ".", repeat(dec_digit), optional(exp_part)), seq(".", repeat(dec_digit), optional(exp_part)), seq(int_literal, optional(exp_part)));
             return token(seq(/[+-]?/, choice(hex_int, dec_literal, "Infinity", "NaN")));
         },
-        _value: ($) => choice($.object, $.array, $.number, $.string, "null", "true", "false"),
+        null: ($) => "null",
+        true: ($) => "true",
+        false: ($) => "false",
+        _value: ($) => choice($.object, $.array, $.number, $.string, $.null, $.true, $.false),
     },
 });

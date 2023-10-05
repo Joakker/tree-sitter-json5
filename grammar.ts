@@ -61,7 +61,11 @@ export = grammar({
       );
     },
 
+    null: ($) => "null",
+    true: ($) => "true",
+    false: ($) => "false",
+
     _value: ($) =>
-      choice($.object, $.array, $.number, $.string, "null", "true", "false"),
+      choice($.object, $.array, $.number, $.string, $.null, $.true, $.false),
   },
 });
