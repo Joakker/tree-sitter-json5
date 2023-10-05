@@ -1,13 +1,11 @@
 (string) @string
 
-(identifier) @identifier
+(identifier) @constant
 
-(number) @number
+(number) @constant.numeric
 
-[
-  (null)
-  (true)
-  (false)
-] @constant.builtin
+(null) @constant.builtin
+
+[(true) (false)] @constant.builtin.boolean
 
 (comment) @comment
