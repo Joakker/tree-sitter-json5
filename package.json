@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Tree-sitter grammar for json5",
   "scripts": {
-    "compile": "npx tsc && tree-sitter generate",
-    "parse": "tree-sitter parse example-file.json5"
+    "compile": "npx tsc && npx tree-sitter generate",
+    "parse": "npx tree-sitter parse example-file.json5"
   },
   "keywords": [],
   "author": "",
