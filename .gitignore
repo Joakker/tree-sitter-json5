@@ -2,3 +2,5 @@ Cargo.lock
 node_modules
 package-lock.json
 example-file.json5
+build/
+target/
