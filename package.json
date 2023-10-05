@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "nan": "^2.15.0",
-    "tree-sitter-cli": "^0.20.0"
+    "tree-sitter-cli": "^0.20.8"
   },
   "main": "bindings/node"
 }

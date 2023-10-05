@@ -5,9 +5,9 @@ module.exports = grammar({
     extras: ($) => [$.comment, /\s/],
     inline: ($) => [$.name],
     rules: {
-        file: ($) => utils_1.optChoice($.object, $.array),
+        file: ($) => (0, utils_1.optChoice)($.object, $.array),
         comment: (_) => token(choice(seq("//", /[^\n]*/), seq("/*", repeat(/./), "*/"))),
-        object: ($) => seq("{", utils_1.commaSep($.member), "}"),
+        object: ($) => seq("{", (0, utils_1.commaSep)($.member), "}"),
         member: ($) => seq(field("name", $.name), ":", field("value", $._value)),
         name: ($) => choice($.string, $.identifier),
         identifier: (_) => {
@@ -15,10 +15,10 @@ module.exports = grammar({
             const identifier_part = choice(identifier_start, /[0-9]/);
             return token(seq(identifier_start, repeat(identifier_part)));
         },
-        array: ($) => seq("[", utils_1.commaSep($._value), "]"),
+        array: ($) => seq("[", (0, utils_1.commaSep)($._value), "]"),
         string: (_) => {
-            const double_quote = seq('"', utils_1.repChoice(seq("\\", choice('"', "\\", "b", "f", "n", "r", "t", "v")), /[^"\\]/), '"');
-            const single_quote = seq("'", utils_1.repChoice(seq("\\", choice("'", "\\", "b", "f", "n", "r", "t", "v")), /[^'\\]/), "'");
+            const double_quote = seq('"', (0, utils_1.repChoice)(seq("\\", choice('"', "\\", "b", "f", "n", "r", "t", "v")), /[^"\\]/), '"');
+            const single_quote = seq("'", (0, utils_1.repChoice)(seq("\\", choice("'", "\\", "b", "f", "n", "r", "t", "v")), /[^'\\]/), "'");
             return token(choice(double_quote, single_quote));
         },
         number: (_) => {
@@ -30,6 +30,9 @@ module.exports = grammar({
             const dec_literal = choice(seq(int_literal, ".", repeat(dec_digit), optional(exp_part)), seq(".", repeat(dec_digit), optional(exp_part)), seq(int_literal, optional(exp_part)));
             return token(seq(/[+-]?/, choice(hex_int, dec_literal, "Infinity", "NaN")));
         },
-        _value: ($) => choice($.object, $.array, $.number, $.string, "null", "true", "false"),
+        null: ($) => "null",
+        true: ($) => "true",
+        false: ($) => "false",
+        _value: ($) => choice($.object, $.array, $.number, $.string, $.null, $.true, $.false),
     },
 });
