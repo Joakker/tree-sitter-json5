@@ -4,3 +4,4 @@ package-lock.json
 example-file.json5
 build/
 target/
+*.swp

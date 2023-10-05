@@ -1,6 +1,3 @@
-(pair
-  key: (_) @string.special.key)
-
 [
   (string)
   (identifier)
@@ -13,7 +10,5 @@
   (true)
   (false)
 ] @constant.builtin
-
-(escape_sequence) @escape
 
 (comment) @comment
