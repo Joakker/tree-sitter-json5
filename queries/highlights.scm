@@ -1,7 +1,10 @@
 (pair
   key: (_) @string.special.key)
 
-(string) @string
+[
+  (string)
+  (identifier)
+] @string
 
 (number) @number
 
