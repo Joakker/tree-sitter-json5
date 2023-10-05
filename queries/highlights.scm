@@ -1,7 +1,6 @@
-[
-  (string)
-  (identifier)
-] @string
+(string) @string
+
+(identifier) @identifier
 
 (number) @number
 
