@@ -6,7 +6,7 @@ module.exports = grammar({
     inline: ($) => [$.name],
     rules: {
         file: ($) => (0, utils_1.optChoice)($.object, $.array),
-        comment: (_) => token(choice(seq("//", /[^\n]*/), seq("/*", repeat(/./), "*/"))),
+        comment: (_) => token(choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"))),
         object: ($) => seq("{", (0, utils_1.commaSep)($.member), "}"),
         member: ($) => seq(field("name", $.name), ":", field("value", $._value)),
         name: ($) => choice($.string, $.identifier),

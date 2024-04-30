@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.3.5"
+    "typescript": "^5.4.5"
   },
   "dependencies": {
     "nan": "^2.15.0",

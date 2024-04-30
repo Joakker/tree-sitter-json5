@@ -48,15 +48,12 @@
                 "value": "/*"
               },
               {
-                "type": "REPEAT",
-                "content": {
-                  "type": "PATTERN",
-                  "value": "."
-                }
+                "type": "PATTERN",
+                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
               },
               {
                 "type": "STRING",
-                "value": "*/"
+                "value": "/"
               }
             ]
           }

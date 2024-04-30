@@ -10,7 +10,7 @@ export = grammar({
     file: ($) => optChoice($.object, $.array),
 
     comment: (_) =>
-      token(choice(seq("//", /[^\n]*/), seq("/*", repeat(/./), "*/"))),
+      token(choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"))),
 
     object: ($) => seq("{", commaSep($.member), "}"),
     member: ($) => seq(field("name", $.name), ":", field("value", $._value)),
