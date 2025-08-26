@@ -2,25 +2,8 @@
   "name": "json5",
   "rules": {
     "file": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "object"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "array"
-            }
-          ]
-        },
-        {
-          "type": "BLANK"
-        }
-      ]
+      "type": "SYMBOL",
+      "name": "_value"
     },
     "comment": {
       "type": "TOKEN",
@@ -49,7 +32,7 @@
               },
               {
                 "type": "PATTERN",
-                "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
+                "value": "([^*]|\\*+[^/*])*\\*+"
               },
               {
                 "type": "STRING",
@@ -270,36 +253,20 @@
                           "type": "CHOICE",
                           "members": [
                             {
-                              "type": "STRING",
-                              "value": "\""
+                              "type": "PATTERN",
+                              "value": "[\"'\\\\/bfnrtv]"
                             },
                             {
-                              "type": "STRING",
-                              "value": "\\"
+                              "type": "PATTERN",
+                              "value": "u[0-9a-fA-F]{4}"
                             },
                             {
-                              "type": "STRING",
-                              "value": "b"
+                              "type": "PATTERN",
+                              "value": "x[0-9a-fA-F]{2}"
                             },
                             {
-                              "type": "STRING",
-                              "value": "f"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "n"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "r"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "t"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "v"
+                              "type": "PATTERN",
+                              "value": "\\r?\\n"
                             }
                           ]
                         }
@@ -307,7 +274,7 @@
                     },
                     {
                       "type": "PATTERN",
-                      "value": "[^\"\\\\]"
+                      "value": "[^\"\\\\]+"
                     }
                   ]
                 }
@@ -341,36 +308,20 @@
                           "type": "CHOICE",
                           "members": [
                             {
-                              "type": "STRING",
-                              "value": "'"
+                              "type": "PATTERN",
+                              "value": "[\"'\\\\/bfnrtv]"
                             },
                             {
-                              "type": "STRING",
-                              "value": "\\"
+                              "type": "PATTERN",
+                              "value": "u[0-9a-fA-F]{4}"
                             },
                             {
-                              "type": "STRING",
-                              "value": "b"
+                              "type": "PATTERN",
+                              "value": "x[0-9a-fA-F]{2}"
                             },
                             {
-                              "type": "STRING",
-                              "value": "f"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "n"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "r"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "t"
-                            },
-                            {
-                              "type": "STRING",
-                              "value": "v"
+                              "type": "PATTERN",
+                              "value": "\\r?\\n"
                             }
                           ]
                         }
@@ -378,7 +329,7 @@
                     },
                     {
                       "type": "PATTERN",
-                      "value": "[^'\\\\]"
+                      "value": "[^'\\\\]+"
                     }
                   ]
                 }

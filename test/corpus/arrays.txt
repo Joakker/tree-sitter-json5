@@ -1,0 +1,75 @@
+==================
+Array of numbers
+==================
+
+[1, 2, 3]
+
+---
+
+(file
+  (array
+    (number)
+    (number)
+    (number)))
+
+==================
+Array with trailing comma
+==================
+
+[1, 2, 3,]
+
+---
+
+(file
+  (array
+    (number)
+    (number)
+    (number)))
+
+==================
+Mixed type array
+==================
+
+[1, "string", true, null, {key: "value"}]
+
+---
+
+(file
+  (array
+    (number)
+    (string)
+    (true)
+    (null)
+    (object
+      (member
+        name: (identifier)
+        value: (string)))))
+
+==================
+Nested arrays
+==================
+
+[[1, 2], [3, 4]]
+
+---
+
+(file
+  (array
+    (array
+      (number)
+      (number))
+    (array
+      (number)
+      (number))))
+
+==================
+Array with single element
+==================
+
+[42]
+
+---
+
+(file
+  (array
+    (number)))

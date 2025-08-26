@@ -1,0 +1,93 @@
+==================
+Object with string key
+==================
+
+{"key": "value"}
+
+---
+
+(file
+  (object
+    (member
+      name: (string)
+      value: (string))))
+
+==================
+Object with unquoted identifier key
+==================
+
+{unquoted: "value"}
+
+---
+
+(file
+  (object
+    (member
+      name: (identifier)
+      value: (string))))
+
+==================
+Object with multiple members
+==================
+
+{
+  "first": 1,
+  second: true,
+  third: null
+}
+
+---
+
+(file
+  (object
+    (member
+      name: (string)
+      value: (number))
+    (member
+      name: (identifier)
+      value: (true))
+    (member
+      name: (identifier)
+      value: (null))))
+
+==================
+Object with trailing comma
+==================
+
+{
+  "key": "value",
+}
+
+---
+
+(file
+  (object
+    (member
+      name: (string)
+      value: (string))))
+
+==================
+Nested objects
+==================
+
+{
+  outer: {
+    inner: {
+      deep: "value"
+    }
+  }
+}
+
+---
+
+(file
+  (object
+    (member
+      name: (identifier)
+      value: (object
+        (member
+          name: (identifier)
+          value: (object
+            (member
+              name: (identifier)
+              value: (string))))))))

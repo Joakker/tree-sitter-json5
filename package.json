@@ -4,7 +4,8 @@
   "description": "Tree-sitter grammar for json5",
   "scripts": {
     "compile": "npx tsc && npx tree-sitter generate",
-    "parse": "npx tree-sitter parse example-file.json5"
+    "test": "npm run compile && npx tree-sitter test",
+    "parse": "npx tree-sitter parse"
   },
   "keywords": [],
   "author": "",

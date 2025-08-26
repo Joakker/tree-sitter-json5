@@ -1,0 +1,99 @@
+==================
+Single line comment before value
+==================
+
+// This is a comment
+42
+
+---
+
+(file
+  (comment)
+  (number))
+
+==================
+Multi-line comment before value
+==================
+
+/* This is a
+   multi-line comment */
+true
+
+---
+
+(file
+  (comment)
+  (true))
+
+==================
+Object with line comments
+==================
+
+{
+  // Comment about key1
+  key1: "value1",
+  // Comment about key2
+  key2: "value2"
+}
+
+---
+
+(file
+  (object
+    (comment)
+    (member
+      name: (identifier)
+      value: (string))
+    (comment)
+    (member
+      name: (identifier)
+      value: (string))))
+
+==================
+Object with multi-line comments
+==================
+
+{
+  /* Multi-line comment
+     about this member */
+  key: "value"
+}
+
+---
+
+(file
+  (object
+    (comment)
+    (member
+      name: (identifier)
+      value: (string))))
+
+==================
+Multiple comments
+==================
+
+// First comment
+/* Second comment */
+// Third comment
+123
+
+---
+
+(file
+  (comment)
+  (comment)
+  (comment)
+  (number))
+
+==================
+Comment with special characters
+==================
+
+/* Comment with * and / characters */
+42
+
+---
+
+(file
+  (comment)
+  (number))
