@@ -1,0 +1,89 @@
+==================
+Double quoted string
+==================
+
+"hello world"
+
+---
+
+(file
+  (string))
+
+==================
+Single quoted string
+==================
+
+'hello world'
+
+---
+
+(file
+  (string))
+
+==================
+String with escape sequences
+==================
+
+"line 1\nline 2\ttab"
+
+---
+
+(file
+  (string))
+
+==================
+String with unicode escape
+==================
+
+"Unicode: \u0041"
+
+---
+
+(file
+  (string))
+
+==================
+String with hex escape
+==================
+
+"Hex: \x41"
+
+---
+
+(file
+  (string))
+
+==================
+Multiline string with backslash continuation
+==================
+
+"This is a \
+multiline \
+string"
+
+---
+
+(file
+  (string))
+
+==================
+String with escaped quotes
+==================
+
+"He said \"hello\""
+
+---
+
+(file
+  (string))
+
+==================
+Single quote string with escaped quote
+==================
+
+'It\'s working'
+
+---
+
+(file
+  (string))

@@ -7,16 +7,19 @@ export = grammar({
   inline: ($) => [$.name],
 
   rules: {
-    file: ($) => optChoice($.object, $.array),
+    file: ($) => $._value,
 
     comment: (_) =>
-      token(choice(seq("//", /[^\n]*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"))),
+      token(choice(
+        seq("//", /[^\n]*/),
+        seq("/*", /([^*]|\*+[^/*])*\*+/, "/")
+      )),
 
     object: ($) => seq("{", commaSep($.member), "}"),
     member: ($) => seq(field("name", $.name), ":", field("value", $._value)),
     name: ($) => choice($.string, $.identifier),
     identifier: (_) => {
-      const identifier_start = /[\$_\p{L}]/;
+      const identifier_start = /[\$_\p{L}]/u;
       const identifier_part = choice(identifier_start, /[0-9]/);
       return token(seq(identifier_start, repeat(identifier_part)));
     },
@@ -24,19 +27,28 @@ export = grammar({
     array: ($) => seq("[", commaSep($._value), "]"),
 
     string: (_) => {
+      const escape_sequence = seq(
+        "\\",
+        choice(
+          /["'\\/bfnrtv]/,
+          /u[0-9a-fA-F]{4}/,
+          /x[0-9a-fA-F]{2}/,
+          /\r?\n/  // Line continuation
+        )
+      );
       const double_quote = seq(
         '"',
         repChoice(
-          seq("\\", choice('"', "\\", "b", "f", "n", "r", "t", "v")),
-          /[^"\\]/
+          escape_sequence,
+          /[^"\\]+/
         ),
         '"'
       );
       const single_quote = seq(
         "'",
         repChoice(
-          seq("\\", choice("'", "\\", "b", "f", "n", "r", "t", "v")),
-          /[^'\\]/
+          escape_sequence,
+          /[^'\\]+/
         ),
         "'"
       );

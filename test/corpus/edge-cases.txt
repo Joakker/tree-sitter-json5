@@ -1,0 +1,117 @@
+==================
+Object with all JSON5 features
+==================
+
+{
+  // Unquoted keys
+  unquoted: 'single quotes',
+  
+  /* Multi-line comment */
+  unicode: "\u0048ello",
+  
+  // Hex numbers
+  hex: 0xDEADBEEF,
+  
+  // Special values
+  infinity: Infinity,
+  notANumber: NaN,
+  
+  // Trailing comma
+  trailing: true,
+}
+
+---
+
+(file
+  (object
+    (comment)
+    (member
+      name: (identifier)
+      value: (string))
+    (comment)
+    (member
+      name: (identifier)
+      value: (string))
+    (comment)
+    (member
+      name: (identifier)
+      value: (number))
+    (comment)
+    (member
+      name: (identifier)
+      value: (number))
+    (member
+      name: (identifier)
+      value: (number))
+    (comment)
+    (member
+      name: (identifier)
+      value: (true))))
+
+==================
+Complex nested structure
+==================
+
+{
+  data: [
+    {
+      id: 1,
+      values: [true, false, null]
+    },
+    {
+      id: 2,
+      values: [-3.14, 0xFF, Infinity]
+    }
+  ]
+}
+
+---
+
+(file
+  (object
+    (member
+      name: (identifier)
+      value: (array
+        (object
+          (member
+            name: (identifier)
+            value: (number))
+          (member
+            name: (identifier)
+            value: (array
+              (true)
+              (false)
+              (null))))
+        (object
+          (member
+            name: (identifier)
+            value: (number))
+          (member
+            name: (identifier)
+            value: (array
+              (number)
+              (number)
+              (number))))))))
+
+==================
+Empty object with comments
+==================
+
+{
+  // Nothing here
+}
+
+---
+
+(file
+  (object
+    (comment)))
+
+==================
+Array with only trailing comma
+==================
+:error
+
+[,]
+
+---
