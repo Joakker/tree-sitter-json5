@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "json5",
   "rules": {
     "file": {
@@ -146,7 +147,8 @@
         "members": [
           {
             "type": "PATTERN",
-            "value": "[\\$_\\p{L}]"
+            "value": "[\\$_\\p{L}]",
+            "flags": "u"
           },
           {
             "type": "REPEAT",
@@ -155,7 +157,8 @@
               "members": [
                 {
                   "type": "PATTERN",
-                  "value": "[\\$_\\p{L}]"
+                  "value": "[\\$_\\p{L}]",
+                  "flags": "u"
                 },
                 {
                   "type": "PATTERN",
@@ -647,6 +650,6 @@
   "inline": [
     "name"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-

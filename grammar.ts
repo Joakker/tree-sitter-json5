@@ -1,4 +1,4 @@
-import { commaSep, optChoice, repChoice } from "./utils";
+import { commaSep, repChoice } from "./utils";
 
 export = grammar({
   name: "json5",
@@ -73,9 +73,9 @@ export = grammar({
       );
     },
 
-    null: ($) => "null",
-    true: ($) => "true",
-    false: ($) => "false",
+    null: (_) => "null",
+    true: (_) => "true",
+    false: (_) => "false",
 
     _value: ($) =>
       choice($.object, $.array, $.number, $.string, $.null, $.true, $.false),
